@@ -88,7 +88,7 @@ The installer will:
 ### Step 3 — Fill in config
 
 ```bash
-nano /home/levesia/config/config.yaml
+nano config/config.yaml
 ```
 
 The three required fields:
