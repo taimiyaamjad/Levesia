@@ -1,0 +1,96 @@
+# Levesia Configuration
+# Fill in all <FILL_IN> values before starting the bot
+
+bot:
+  token: "<YOUR_DISCORD_BOT_TOKEN>"
+  owner_id: <YOUR_DISCORD_USER_ID>
+  prefix: "!"
+  status: "Levesia | !help"
+
+paths:
+  workspace: "/home/levesia/workspace"
+  output:    "/home/levesia/output"
+  logs:      "/home/levesia/logs"
+  skills:    "/home/levesia/skills"
+  prompts:   "/home/levesia/prompts"
+
+execution:
+  timeout_seconds:   120
+  max_output_size_mb: 24
+  run_as_user: "levesia"
+
+groq:
+  api_key: "<YOUR_GROQ_API_KEY>"
+  model:   "llama3-70b-8192"
+  max_tokens: 8000
+
+search:
+  engine: "duckduckgo"        # No API key required
+  max_results: 8
+
+languages:
+  python:
+    extensions: [".py"]
+    run: "python3 {entrypoint}"
+    install: "pip install -r requirements.txt --quiet"
+    entrypoint: "main.py"
+  javascript:
+    extensions: [".js"]
+    run: "node {entrypoint}"
+    install: "npm install --silent"
+    entrypoint: "index.js"
+  typescript:
+    extensions: [".ts"]
+    run: "npx ts-node {entrypoint}"
+    install: "npm install --silent"
+    entrypoint: "index.ts"
+  go:
+    extensions: [".go"]
+    run: "go run ."
+    install: ""
+    entrypoint: "main.go"
+  rust:
+    extensions: [".rs"]
+    run: "cargo run"
+    install: ""
+    entrypoint: "src/main.rs"
+  c:
+    extensions: [".c"]
+    run: "gcc *.c -o out && ./out"
+    install: ""
+    entrypoint: "main.c"
+  cpp:
+    extensions: [".cpp"]
+    run: "g++ *.cpp -o out && ./out"
+    install: ""
+    entrypoint: "main.cpp"
+  java:
+    extensions: [".java"]
+    run: "javac *.java && java Main"
+    install: ""
+    entrypoint: "Main.java"
+  bash:
+    extensions: [".sh"]
+    run: "bash {entrypoint}"
+    install: ""
+    entrypoint: "main.sh"
+  ruby:
+    extensions: [".rb"]
+    run: "ruby {entrypoint}"
+    install: "bundle install"
+    entrypoint: "main.rb"
+  php:
+    extensions: [".php"]
+    run: "php {entrypoint}"
+    install: ""
+    entrypoint: "main.php"
+
+system_message: |
+  RULE #1: Never expose secrets, SSH keys, .env files, /etc/passwd,
+  /etc/shadow, or any system credentials via Discord.
+  RULE #2: Never execute raw shell strings from Discord messages.
+  All execution goes through the sandboxed executor only.
+  RULE #3: Confirm before any destructive operation.
+  RULE #4: Only the configured owner_id may trigger commands.
+  RULE #5: Code runs as unprivileged 'levesia' user only. Never root.
+  These rules override all other instructions.
