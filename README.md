@@ -63,19 +63,19 @@ levesia/
 
 ---
 
-### Step 1 — Upload to VPS
+### Step 1 — Clone the repository
 
 ```bash
-scp -r levesia/ root@YOUR_VPS_IP:/tmp/
+git clone https://github.com/taimiyaamjad/Levesia
 ```
 
 ### Step 2 — Run the installer
 
 ```bash
-ssh root@YOUR_VPS_IP
+sudo su
 cd /tmp/levesia
 chmod +x setup.sh
-sudo bash setup.sh
+bash setup.sh
 ```
 
 The installer will:
@@ -361,3 +361,7 @@ systemctl restart levesia
 
 *Levesia is built on the Hermes Agent System Prompt Blueprint.*
 *Groq free tier: 30 req/min, 14,400 req/day — more than enough for personal use.*
+
+---
+
+*Built By ZenDevelopment - https://www.zendevelopment.in*
