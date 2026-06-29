@@ -73,7 +73,7 @@ git clone https://github.com/taimiyaamjad/Levesia
 
 ```bash
 sudo su
-cd /tmp/levesia
+cd Levesia
 chmod +x setup.sh
 bash setup.sh
 ```
